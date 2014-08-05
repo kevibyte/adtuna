@@ -2,28 +2,28 @@
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 300;
-  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('../fonts/sourcesanspro/sourcesanspro-light.woff') format('woff');
+  src: local('Source Sans Pro Light'), local('SourceSansPro-Light'), url('/fonts/sourcesanspro/sourcesanspro-light.woff') format('woff');
 }
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 400;
-  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url('../fonts/sourcesanspro/sourcesanspro.woff') format('woff');
+  src: local('Source Sans Pro'), local('SourceSansPro-Regular'), url('/fonts/sourcesanspro/sourcesanspro.woff') format('woff');
 }
 @font-face {
   font-family: 'Source Sans Pro';
   font-style: normal;
   font-weight: 700;
-  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url('../fonts/sourcesanspro/sourcesanspro-bold.woff') format('woff');
+  src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url('/fonts/sourcesanspro/sourcesanspro-bold.woff') format('woff');
 }
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon.eot?-uzvjbf');
-	src:url('../fonts/icomoon.eot?#iefix-uzvjbf') format('embedded-opentype'),
-		url('../fonts/icomoon.woff?-uzvjbf') format('woff'),
-		url('../fonts/icomoon.ttf?-uzvjbf') format('truetype'),
-		url('../fonts/icomoon.svg?-uzvjbf#icomoon') format('svg');
+	src:url('/fonts/icomoon.eot?-uzvjbf');
+	src:url('/fonts/icomoon.eot?#iefix-uzvjbf') format('embedded-opentype'),
+		url('/fonts/icomoon.woff?-uzvjbf') format('woff'),
+		url('/fonts/icomoon.ttf?-uzvjbf') format('truetype'),
+		url('/fonts/icomoon.svg?-uzvjbf#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -45,9 +45,11 @@
 .icon-tuna-horiz:before {
 	content: "\e601";
 }
+
 .icon-tuna-diag:before {
 	content: "\e600";
 }
+
 .logo {
   font-size: 27px;
   font-family: 'Amatic SC', cursive;
