@@ -31,7 +31,7 @@ html, body{
 
 // menu
 .app-aside{
-	position: relative;	
+	position: relative;
 	float: left;
 	&:before{
 		content: "";
@@ -62,7 +62,7 @@ html, body{
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	right: 0;	
+	right: 0;
 }
 
 .hbox{
@@ -140,6 +140,21 @@ html, body{
 	}
 }
 
+.horiz{
+  .inner{
+    position: relative;
+    text-align: center;
+    width: 400px;
+    margin: auto;
+  }
+  position: absolute;
+  left: 0 !important;
+  top: 0 !important;
+  width: 100% !important;
+  height:40px;
+  margin: 0px;
+}
+
 .navbar-header{
 	> button{
 		text-decoration: none;
@@ -151,6 +166,14 @@ html, body{
 	}
 }
 
+.brand-top{
+float: none;
+height: auto;
+display: inline-block;
+padding: 0 10px;
+text-align: center;
+font-size:30px;
+}
 .navbar-brand{
 	float: none;
 	text-align: center;
@@ -167,7 +190,7 @@ html, body{
 		max-height: 20px;
 		margin-top: -4px;
 		vertical-align: middle;
-	}	
+	}
 }
 
 @media (min-width: 768px) {
@@ -219,7 +242,7 @@ html, body{
 				padding: 0;
 			}
 		}
-		
+
 	}
 
 	.app-aside-fixed{

@@ -1,31 +1,183 @@
 'use strict'
+# TODO - Seperate this 
+angular.module("app.filters", []).filter "fromNow", ->
+  (date) ->
+    moment(date).fromNow()
 
-angular.module 'adtunaApp'
-.controller 'SettingsCtrl', ($scope, User, Auth) ->
-    isTouchDevice = !!("ontouchstart" of window)
-    isIE = !!navigator.userAgent.match(/MSIE/i)
-    not isTouchDevice and $("html").addClass("no-touch")
-    isIE and $("html").addClass("ie")
-    $scope.app =
-      name: "AdTuna"
-      version: "1.0.0"
-      color:
-        primary: "#7266ba"
-        info: "#23b7e5"
-        success: "#27c24c"
-        warning: "#fad733"
-        danger: "#f05050"
-        light: "#e8eff0"
-        dark: "#3a3f51"
-        black: "#1c2b36"
+angular.module('app.services', []).
+  value('version', '1.0');
 
-      settings:
-        navbarHeaderColor: "bg-primary"
-        navbarCollapseColor: "bg-primary dk"
-        asideColor: "bg-black"
-        headerFixed: true
-        asideFixed: false
-        asideFolded: false
+angular.module("app.directives", ["ui.load"]).directive("uiShift", [
+  "$timeout"
+  ($timeout) ->
+    return (
+      restrict: "A"
+      replace: true
+      link: (scope, el, attr) ->
+        sm = ->
+          $timeout ->
+            method = attr.uiShift
+            target = attr.target
+            _el.hasClass("in") or _el[method](target).addClass("in")
+            return
+
+          return
+        md = ->
+          parent and parent["prepend"](el)
+          not parent and _el["insertAfter"](prev)
+          _el.removeClass "in"
+          return
+        _el = $(el)
+        _window = $(window)
+        prev = _el.prev()
+        parent = undefined
+        width = _window.width()
+        not prev.length and (parent = _el.parent())
+        (width < 768 and sm()) or md()
+        _window.resize ->
+          if width isnt _window.width()
+            $timeout ->
+              (_window.width() < 768 and sm()) or md()
+              width = _window.width()
+              return
+
+          return
+
+        return
+    )
+]).directive("uiToggleClass", [
+  "$timeout"
+  "$document"
+  ($timeout, $document) ->
+    return (
+      restrict: "AC"
+      replace: true
+      link: (scope, el, attr) ->
+        el.on "click", (e) ->
+          magic = (_class, target) ->
+            patt = new RegExp("\\s" + _class.replace(/\*/g, "[A-Za-z0-9-_]+").split(" ").join("\\s|\\s") + "\\s", "g")
+            cn = " " + $(target)[0].className + " "
+            cn = cn.replace(patt, " ")  while patt.test(cn)
+            $(target)[0].className = $.trim(cn)
+            return
+          e.preventDefault()
+          classes = attr.uiToggleClass.split(",")
+          targets = (attr.target and attr.target.split(",")) or Array(el)
+          key = 0
+          angular.forEach classes, (_class) ->
+            target = targets[(targets.length and key)]
+            (_class.indexOf("*") isnt -1) and magic(_class, target)
+            $(target).toggleClass _class
+            key++
+            return
+
+          $(el).toggleClass "active"
+          return
+
+        return
+    )
+]).directive("uiNav", [
+  "$timeout"
+  ($timeout) ->
+    return (
+      restrict: "AC"
+      replace: true
+      link: (scope, el, attr) ->
+        _window = $(window)
+        _mb = 768
+        $(el).on "click", "a", (e) ->
+          _this = $(this)
+          _this.parent().siblings(".active").toggleClass "active"
+          _this.parent().toggleClass "active"
+          _this.next().is("ul") and e.preventDefault()
+          _this.next().is("ul") or ((_window.width() < _mb) and $(".app-aside").toggleClass("show"))
+          return
+
+        wrap = $(".app-aside")
+        next = undefined
+        $(el).on "mouseenter", "a", (e) ->
+          return  if not $(".app-aside-fixed.app-aside-folded").length or (_window.width() < _mb)
+          _this = $(this)
+          next and next.trigger("mouseleave.nav")
+          if _this.next().is("ul")
+            next = _this.next()
+          else
+            return
+          next.appendTo(wrap).css "top", _this.offset().top - _this.height()
+          next.on "mouseleave.nav", (e) ->
+            next.appendTo _this.parent()
+            next.off "mouseleave.nav"
+            _this.parent().removeClass "active"
+            return
+
+          _this.parent().addClass "active"
+          return
+
+        wrap.on "mouseleave", (e) ->
+          next and next.trigger("mouseleave.nav")
+          return
+
+        return
+    )
+]).directive("uiScroll", [
+  "$location"
+  "$anchorScroll"
+  ($location, $anchorScroll) ->
+    return (
+      restrict: "AC"
+      replace: true
+      link: (scope, el, attr) ->
+        el.on "click", (e) ->
+          $location.hash attr.uiScroll
+          $anchorScroll()
+          return
+
+        return
+    )
+]).directive("uiFullscreen", [
+  "uiLoad"
+  (uiLoad) ->
+    return (
+      restrict: "AC"
+      template: "<i class=\"fa fa-expand fa-fw text\"></i><i class=\"fa fa-compress fa-fw text-active\"></i>"
+      link: (scope, el, attr) ->
+        el.addClass "hide"
+        uiLoad.load("js/libs/screenfull.min.js").then ->
+          el.removeClass "hide"  if screenfull.enabled
+          el.on "click", ->
+            target = undefined
+            attr.target and (target = $(attr.target)[0])
+            el.toggleClass "active"
+            screenfull.toggle target
+            return
+
+          return
+
+        return
+    )
+]).directive "uiButterbar", [
+  "$rootScope"
+  ($rootScope) ->
+    return (
+      restrict: "AC"
+      template: "<span class=\"bar\"></span>"
+      link: (scope, el, attrs) ->
+        el.addClass "butterbar hide"
+        scope.$on "$stateChangeStart", (event) ->
+          el.removeClass("hide").addClass "active"
+          return
+
+        scope.$on "$stateChangeSuccess", (event, toState, toParams, fromState) ->
+          event.targetScope.$watch "$viewContentLoaded", ->
+            el.addClass("hide").removeClass "active"
+            return
+
+          return
+
+        return
+    )
+]
+
 angular.module('app.controllers', [])
 .controller "AccordionDemoCtrl", ($scope) ->
     $scope.oneAtATime = true
@@ -399,194 +551,12 @@ angular.module('app.controllers', [])
 .controller "FlotChartDemoCtrl", [
   "$scope"
   ($scope) ->
-    $scope.d = [
-      [
-        1
-        6.5
-      ]
-      [
-        2
-        6.5
-      ]
-      [
-        3
-        7
-      ]
-      [
-        4
-        8
-      ]
-      [
-        5
-        7.5
-      ]
-      [
-        6
-        7
-      ]
-      [
-        7
-        6.8
-      ]
-      [
-        8
-        7
-      ]
-      [
-        9
-        7.2
-      ]
-      [
-        10
-        7
-      ]
-      [
-        11
-        6.8
-      ]
-      [
-        12
-        7
-      ]
-    ]
-    $scope.d0_1 = [
-      [
-        0
-        7
-      ]
-      [
-        1
-        6.5
-      ]
-      [
-        2
-        12.5
-      ]
-      [
-        3
-        7
-      ]
-      [
-        4
-        9
-      ]
-      [
-        5
-        6
-      ]
-      [
-        6
-        11
-      ]
-      [
-        7
-        6.5
-      ]
-      [
-        8
-        8
-      ]
-      [
-        9
-        7
-      ]
-    ]
-    $scope.d0_2 = [
-      [
-        0
-        4
-      ]
-      [
-        1
-        4.5
-      ]
-      [
-        2
-        7
-      ]
-      [
-        3
-        4.5
-      ]
-      [
-        4
-        3
-      ]
-      [
-        5
-        3.5
-      ]
-      [
-        6
-        6
-      ]
-      [
-        7
-        3
-      ]
-      [
-        8
-        4
-      ]
-      [
-        9
-        3
-      ]
-    ]
-    $scope.d1_1 = [
-      [
-        10
-        120
-      ]
-      [
-        20
-        70
-      ]
-      [
-        30
-        70
-      ]
-      [
-        40
-        60
-      ]
-    ]
-    $scope.d1_2 = [
-      [
-        10
-        50
-      ]
-      [
-        20
-        60
-      ]
-      [
-        30
-        90
-      ]
-      [
-        40
-        35
-      ]
-    ]
-    $scope.d1_3 = [
-      [
-        10
-        80
-      ]
-      [
-        20
-        40
-      ]
-      [
-        30
-        30
-      ]
-      [
-        40
-        20
-      ]
-    ]
+    $scope.d = [ [1,6.5],[2,6.5],[3,7],[4,8],[5,7.5],[6,7],[7,6.8],[8,7],[9,7.2],[10,7],[11,6.8],[12,7] ];
+    $scope.d0_1 = [ [0,7],[1,6.5],[2,12.5],[3,7],[4,9],[5,6],[6,11],[7,6.5],[8,8],[9,7] ];
+    $scope.d0_2 = [ [0,4],[1,4.5],[2,7],[3,4.5],[4,3],[5,3.5],[6,6],[7,3],[8,4],[9,3] ];
+    $scope.d1_1 = [ [10, 120], [20, 70], [30, 70], [40, 60] ];
+    $scope.d1_2 = [ [10, 50],  [20, 60], [30, 90],  [40, 35] ];
+    $scope.d1_3 = [ [10, 80],  [20, 40], [30, 30],  [40, 20] ];
     $scope.d2 = []
     i = 0
 
