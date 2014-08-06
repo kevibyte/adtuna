@@ -437,7 +437,43 @@ blockquote{
       }
     }
   }
+  > thead{
+    .glyphicon-chevron-up,
+    .glyphicon-chevron-down,
+    .fa-chevron-up,
+    .fa-chevron-down {
+        position: absolute;
+        color: #999;
+        font-size:10px;
+
+        &:hover {
+            color: @brand-dark;
+            cursor: pointer;
+        }
+        &.active {
+            color: @brand-dark;
+        }
+    }
+    .fa-chevron-up {
+        top: 4px;
+        right: 5px;
+    }
+    .fa-chevron-down {
+        top: 18px;
+        right: 5px;
+    }
+      .glyphicon-chevron-up {
+          top: 4px;
+          right: 5px;
+      }
+      .glyphicon-chevron-down {
+          top: 18px;
+          right: 6px;
+      }
+  }
+
   > thead > tr > th{
+    position: relative;
     padding:8px 15px;
     border-bottom: 1px solid @table-border-color;
   }
