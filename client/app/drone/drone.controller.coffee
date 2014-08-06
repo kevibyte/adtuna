@@ -2,12 +2,12 @@
 
 angular.module 'adtunaApp'
 .controller('DroneCtrl', [
-    '$scope', '$filter', '$http', '$timeout'
-    ($scope, $filter, $http, $timeout) ->
-        $scope.message = 'Hello'
+    '$stateParams', '$scope', '$filter', '$http', '$timeout'
+    ($stateParams, $scope, $filter, $http, $timeout) ->
+        console.log 'params-->' , $stateParams
+        $scope.drone = $stateParams.droneid
         # filter
         saveStores = (results) ->
-          console.log 'res', results
           $scope.stores = results;
           $scope.loading = false
           init()
@@ -20,10 +20,6 @@ angular.module 'adtunaApp'
         $scope.select = (page) ->
             start = (page - 1) * $scope.numPerPage
             end = start + $scope.numPerPage
-            console.log start
-            console.log end
-            console.log $scope.currentPageStores
-            console.log 'fs', $scope.filteredStores
             $scope.currentPageStores = $scope.filteredStores.slice(start, end)
 
         # on page change: change numPerPage, filtering string
@@ -47,12 +43,10 @@ angular.module 'adtunaApp'
 
         # orderBy
         $scope.order = (rowName)->
-            console.log 'orderign---->', rowName
             if $scope.row == rowName
                 return
             $scope.row = rowName
             $scope.filteredStores = $filter('orderBy')($scope.stores, rowName)
-            console.log 'filteredstores-->', $scope.filteredStores
             $scope.onOrderChange()
 
         # pagination
@@ -72,4 +66,7 @@ angular.module 'adtunaApp'
         # $http.get('../api/users/').success(saveStores) if $route.current.loadedTemplateUrl.indexOf('user') > -1
 
 ])
-
+.controller('DroneEditCtrl', [
+    '$stateParams', '$scope', '$filter', '$http', '$timeout'
+    ($stateParams, $scope, $filter, $http, $timeout) ->
+])

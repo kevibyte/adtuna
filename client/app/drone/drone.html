@@ -1,114 +1,132 @@
 <div class="bg-light lter b-b wrapper-md">
-  <h1 class="m-n font-thin h3">Accounts</h1>
+   <h1 class="m-n font-thin h3">Accounts</h1>
 </div>
 <div class="wrapper-md">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      Account List
-    </div>
-    <div class="row wrapper">
-      <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
-          <option value="0">Bulk action</option>
-          <option value="1">Delete selected</option>
-          <option value="2">Bulk edit</option>
-          <option value="3">Export</option>
-        </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
+   <tabset class="tab-container">
+   <tab justified="true" heading="List"
+   ui-sref="app.drone.list"
+   >
+   <div class="panel panel-default">
+      <div class="row wrapper">
+         <div class="col-sm-5 m-b-xs">
+            <select class="input-sm form-control w-sm inline v-middle">
+               <option value="0">Bulk action</option>
+               <option value="1">Delete selected</option>
+               <option value="2">Bulk edit</option>
+               <option value="3">Export</option>
+            </select>
+            <button class="btn btn-sm btn-default">Apply</button>                
+         </div>
+         <div class="col-sm-4">
+         </div>
+         <div class="col-sm-3">
+            <div class="input-group">
+               <form>
+                  <input type="text"
+                  placeholder="search"
+                  class="form-control"
+                  data-ng-model="searchKeywords"
+                  data-ng-keyup="search()">
+               </form>
+            </div>
+         </div>
       </div>
-      <div class="col-sm-4">
-      </div>
-      <div class="col-sm-3">
-        <div class="input-group">
-              <form>
-                <input type="text"
-                placeholder="search"
-                class="form-control"
-                data-ng-model="searchKeywords"
-                data-ng-keyup="search()">
-              </form>
-        </div>
-      </div>
-    </div>
-    <div class="table-responsive">
-      <!-- <table class="dataTable table table&#45;striped m&#45;b&#45;none"> -->
-        <table class="dataTable table table-bordered table-striped table-responsive">
-          <thead>
-            <tr>
-              <th><div class="th">
-                  Name
-                  <span class="glyphicon glyphicon-chevron-up"
-                    data-ng-click=" order('title') "
-                    data-ng-class="{active: row == 'title'}"></span>
-                  <span class="glyphicon glyphicon-chevron-down"
-                    data-ng-click=" order('-title') "
-                    data-ng-class="{active: row == '-title'}"></span>
-              </div></th>
-              <th><div class="th">
-                  Artist
-                  <span class="glyphicon glyphicon-chevron-up"
-                    data-ng-click=" order('artist') "
-                    data-ng-class="{active: row == 'artist'}"></span>
-                  <span class="glyphicon glyphicon-chevron-down"
-                    data-ng-click=" order('-artist') "
-                    data-ng-class="{active: row == '-artist'}"></span>
-              </div></th>
-              <th><div class="th">
-                  Released
-                  <span class="glyphicon glyphicon-chevron-up"
-                    data-ng-click=" order('albums') "
-                    data-ng-class="{active: row == 'albums'}"></span>
-                  <span class="glyphicon glyphicon-chevron-down"
-                    data-ng-click=" order('-albums') "
-                    data-ng-class="{active: row == '-albums'}"></span>
-              </div></th>
-              <th><div class="th">
-                  Tracks
-                  <span class="glyphicon glyphicon-chevron-up"
-                    data-ng-click=" order('tracks') "
-                    data-ng-class="{active: row == 'tracks'}"></span>
-                  <span class="glyphicon glyphicon-chevron-down"
-                    data-ng-click=" order('-tracks') "
-                    data-ng-class="{active: row == '-tracks'}"></span>
-              </div></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr data-ng-repeat="store in currentPageStores">
-              <td>
-                  {{store.title}}
-              </td>
-              <td>{{store.artist}}</td>
-              <td>{{store.release_date | date: 'M/d/y'}}</td>
-              <td>{{store.total_tracks}}</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="table-responsive">
+         <!-- <table class="dataTable table table&#45;striped m&#45;b&#45;none"> -->
+            <table class="dataTable table table-bordered table-striped table-responsive">
+               <thead>
+                  <tr>
+                     <th><div class="th">
+                           Name
+                           <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('title') "
+                              data-ng-class="{active: row == 'title'}"></span>
+                           <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-title') "
+                              data-ng-class="{active: row == '-title'}"></span>
+                     </div></th>
+                     <th><div class="th">
+                           Artist
+                           <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('artist') "
+                              data-ng-class="{active: row == 'artist'}"></span>
+                           <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-artist') "
+                              data-ng-class="{active: row == '-artist'}"></span>
+                     </div></th>
+                     <th><div class="th">
+                           Released
+                           <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('albums') "
+                              data-ng-class="{active: row == 'albums'}"></span>
+                           <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-albums') "
+                              data-ng-class="{active: row == '-albums'}"></span>
+                     </div></th>
+                     <th><div class="th">
+                           Tracks
+                           <span class="glyphicon glyphicon-chevron-up"
+                              data-ng-click=" order('tracks') "
+                              data-ng-class="{active: row == 'tracks'}"></span>
+                           <span class="glyphicon glyphicon-chevron-down"
+                              data-ng-click=" order('-tracks') "
+                              data-ng-class="{active: row == '-tracks'}"></span>
+                     </div></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr
+                     ui-sref="app.drone.edit({droneid:$index+1})"
+                     data-ng-repeat="store in currentPageStores">
+                     <td>
+                        {{store.title}}
+                     </td>
+                     <td>{{store.artist}}</td>
+                     <td>{{store.release_date | date: 'M/d/y'}}</td>
+                     <td>{{store.total_tracks}}</td>
+                  </tr>
+               </tbody>
+            </table>
 
-    </div>
-    <footer class="panel-footer">
-          <div class="row">
-            <div class="col-md-6 page-num-info">
-              <span>
-                Show
-                <select data-ng-model="numPerPage"
-                  data-ng-options="num for num in numPerPageOpt"
-                  data-ng-change="onNumPerPageChange()">
-                </select>
-                entries per page
-              </span>
+         </div>
+         <footer class="panel-footer">
+            <div class="row">
+               <div class="col-md-6 page-num-info">
+                  <span>
+                     Show
+                     <select data-ng-model="numPerPage"
+                        data-ng-options="num for num in numPerPageOpt"
+                        data-ng-change="onNumPerPageChange()">
+                     </select>
+                     entries per page
+                  </span>
+               </div>
+               <div class="col-md-6 text-right pagination-container">
+                  <!-- <pagination class="pagination&#45;sm" -->
+                  <!-- page="currentPage" -->
+                  <!-- total&#45;items="filteredStores.length" -->
+                  <!-- max&#45;size="4" -->
+                  <!-- on&#45;select&#45;page="select(page)" -->
+                  <!-- items&#45;per&#45;page="numPerPage" -->
+                  <!-- rotate="false" -->
+                  <!-- boundary&#45;links="true"></pagination> -->
+               </div>
             </div>
-            <div class="col-md-6 text-right pagination-container">
-              <pagination class="pagination-sm"
-              page="currentPage"
-              total-items="filteredStores.length"
-              max-size="4"
-              on-select-page="select(page)"
-              items-per-page="numPerPage"
-              rotate="false"
-              boundary-links="true"></pagination>
-            </div>
-          </div>
-    </footer>
-  </div>
-</div>
+         </footer>
+      </div>
+      </tab>
+      <tab ng-show="requests">
+      <tab-heading>
+      <span class="badge bg-danger">
+         {{requests.length || 0}}
+      </span>
+      Requests
+      </tab-heading>
+      [[REQUEST STUFF GOES HERE]]
+      </tab>
+      <tab ng-show="drone" active="drone" heading="Edit" disabled="!drone">
+      {{tab.content}}
+      </tab>
+      </tabset>
+
+   </div>
