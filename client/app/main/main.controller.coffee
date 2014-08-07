@@ -2,7 +2,13 @@
 
 angular.module 'adtunaApp'
 .controller 'MainCtrl', ($scope, $http, socket) ->
+  console.log 'using' , socket
   $scope.awesomeThings = []
+  socket.socket.on 'drones:asdf', (drones) ->
+     console.log 'drones', drones
+  $scope.checkSock = () ->
+     console.log('checking...')
+     console.log('Socket-->', socket)
 
   $http.get('/api/things').success (awesomeThings) ->
     $scope.awesomeThings = awesomeThings

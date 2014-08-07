@@ -471,13 +471,14 @@ module.exports = function (grunt) {
         sourceMap: true,
         paths: [
           '<%= yeoman.client %>/bower_components',
+          '<%= yeoman.client %>/less',
           '<%= yeoman.client %>/app',
           '<%= yeoman.client %>/components'
         ]
       },
       server: {
         files: {
-          '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.less'
+          '.tmp/app/app.css' : '<%= yeoman.client %>/less/app.less'
         }
       },
     },

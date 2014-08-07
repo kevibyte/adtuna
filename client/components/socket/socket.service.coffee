@@ -15,6 +15,15 @@ angular.module 'adtunaApp'
 
   socket: socket
 
+  start: (cb) ->
+     console.log 'starting this bitch'
+     socket.on 'auth', (obj) ->
+        cb obj
+  startme: (cb) ->
+     console.log 'starting this 2nd bitch'
+     socket.on 'auth2', (obj) ->
+        cb obj
+
   ###
   Register listeners to sync an array with updates on a model
 

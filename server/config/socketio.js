@@ -4,7 +4,7 @@
 
 'use strict';
 
-var config = require('./environment');
+var config = require('./environment')
 
 // When the user disconnects.. perform this
 function onDisconnect(socket) {
@@ -44,17 +44,12 @@ module.exports = function (socketio) {
             process.env.DOMAIN;
 
     socket.connectedAt = new Date();
-    socket.on('auth', function(msg){
-      console.log('auth--->', msg)
-      socket.emit('is_ready')
-    })
 
     // Call onDisconnect.
     socket.on('disconnect', function () {
       onDisconnect(socket);
       console.info('[%s] DISCONNECTED', socket.address);
     });
-
     // Call onConnect.
     onConnect(socket);
     console.info('[%s] CONNECTED', socket.address);

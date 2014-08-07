@@ -1,6 +1,5 @@
 'use strict'
 
-# TODO: Fix routing issues when loading pages directly
 angular.module 'adtunaApp'
 .config ($stateProvider) ->
   $stateProvider.state("app",
@@ -10,6 +9,7 @@ angular.module 'adtunaApp'
   ).state("app.dashboard",
     url: "/dashboard"
     templateUrl: "tpl/app_dashboard.html"
+    controller: 'MainCtrl'
   ).state("app.ui",
     url: "/ui"
     template: "<div ui-view class=\"fade-in-up\"></div>"
