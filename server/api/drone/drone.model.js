@@ -4,8 +4,8 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var DroneSchema = new Schema({
-  name: String,
-  info: String,
+  owner: String,
+  ip: String,
   active: Boolean
 });
 

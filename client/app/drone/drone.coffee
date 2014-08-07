@@ -4,7 +4,6 @@ angular.module 'adtunaApp'
 .config ($stateProvider) ->
   $stateProvider
     .state 'app.drone',
-      abstract:true
       url: '/drone'
       template: "<div ui-view class=\"fade-in-down\"></div>"
     .state 'app.drone.list',

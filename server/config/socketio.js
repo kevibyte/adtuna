@@ -44,6 +44,10 @@ module.exports = function (socketio) {
             process.env.DOMAIN;
 
     socket.connectedAt = new Date();
+    socket.on('auth', function(msg){
+      console.log('auth--->', msg)
+      socket.emit('is_ready')
+    })
 
     // Call onDisconnect.
     socket.on('disconnect', function () {
