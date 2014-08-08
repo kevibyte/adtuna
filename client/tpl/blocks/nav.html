@@ -1,239 +1,27 @@
-<!-- first -->
-<ul class="nav">
-  <li>
-    <a ui-sref="app.dashboard">
-      <i class="glyphicon glyphicon-stats icon text-primary-lt"></i>
-      <span>Dashboard</span>
-    </a>
-  </li>
-  <li>
-    <a ui-sref="app.drone.list">
-      <i class="fa fa-group icon text-info-dker"></i>
-      <span>Accounts</span>
-    </a>
-  </li>
-  <li>
-    <a ui-sref="app.page.campaign">
-      <i class="glyphicon glyphicon-list icon text-info-lter"></i>
-      <span>Campaigns</span>
-    </a>
-  </li>
-  <li>
-    <a ui-sref="app.page.stats">
-      <i class="glyphicon glyphicon-signal icon text-success"></i>
-      <span>Stats</span>
-    </a>
-  </li>
-  <li class="line dk"></li>
-
-<!--   <li class="hidden&#45;folded padder m&#45;t m&#45;b&#45;sm text&#45;muted text&#45;xs"> -->
-<!--     Components -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a href class="auto"> -->
-<!--       <span class="pull&#45;right text&#45;muted"> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;right text"></i> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;down text&#45;active"></i> -->
-<!--       </span> -->
-<!--       <i class="glyphicon glyphicon&#45;briefcase icon"></i> -->
-<!--       <span>UI Kits</span> -->
-<!--     </a> -->
-<!--     <ul class="nav nav&#45;sub dk"> -->
-<!--       <li class="nav&#45;sub&#45;header"> -->
-<!--         <a href> -->
-<!--           <span>UI Kits</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.buttons"> -->
-<!--           <span>Buttons</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.icons"> -->
-<!--           <b class="badge bg&#45;info pull&#45;right">3</b> -->
-<!--           <span>Icons</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.grid"> -->
-<!--           <span>Grid</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.bootstrap"> -->
-<!--           <b class="badge bg&#45;primary pull&#45;right">16</b> -->
-<!--           <span>Bootstrap</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.sortable"> -->
-<!--           <span>Sortable</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.portlet"> -->
-<!--           <span>Portlet</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.timeline"> -->
-<!--           <span>Timeline</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.ui.jvectormap"> -->
-<!--           <span>Vector Map</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--     </ul> -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a href class="auto"> -->
-<!--       <span class="pull&#45;right text&#45;muted"> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;right text"></i> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;down text&#45;active"></i> -->
-<!--       </span> -->
-<!--       <b class="label bg&#45;primary pull&#45;right">2</b> -->
-<!--       <i class="glyphicon glyphicon&#45;list"></i> -->
-<!--       <span>Table</span> -->
-<!--     </a> -->
-<!--     <ul class="nav nav&#45;sub dk"> -->
-<!--       <li class="nav&#45;sub&#45;header"> -->
-<!--         <a href> -->
-<!--           <span>Table</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.table.static"> -->
-<!--           <span>Table static</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.table.datatable"> -->
-<!--           <span>Datatable</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--     </ul> -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a href class="auto"> -->
-<!--       <span class="pull&#45;right text&#45;muted"> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;right text"></i> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;down text&#45;active"></i> -->
-<!--       </span> -->
-<!--       <i class="glyphicon glyphicon&#45;edit"></i> -->
-<!--       <span>Form</span> -->
-<!--     </a> -->
-<!--     <ul class="nav nav&#45;sub dk"> -->
-<!--       <li class="nav&#45;sub&#45;header"> -->
-<!--         <a href> -->
-<!--           <span>Form</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.form.elements"> -->
-<!--           <span>Form elements</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.form.validation"> -->
-<!--           <span>Form validation</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.form.wizard"> -->
-<!--           <span>Form wizard</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--     </ul> -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a ui&#45;sref="app.ui.chart"> -->
-<!--       <i class="glyphicon glyphicon&#45;signal"></i> -->
-<!--       <span>Chart</span> -->
-<!--     </a> -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a href class="auto"> -->
-<!--       <span class="pull&#45;right text&#45;muted"> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;right text"></i> -->
-<!--         <i class="fa fa&#45;fw fa&#45;angle&#45;down text&#45;active"></i> -->
-<!--       </span> -->
-<!--       <i class="glyphicon glyphicon&#45;file icon"></i> -->
-<!--       <span>Pages</span> -->
-<!--     </a> -->
-<!--     <ul class="nav nav&#45;sub dk"> -->
-<!--       <li class="nav&#45;sub&#45;header"> -->
-<!--         <a href> -->
-<!--           <span>Pages</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.page.profile"> -->
-<!--           <span>Profile</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.page.post"> -->
-<!--           <span>Post</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.page.search"> -->
-<!--           <span>Search</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="app.page.invoice"> -->
-<!--           <span>Invoice</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="lockme"> -->
-<!--           <span>Lock screen</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="access.signin"> -->
-<!--           <span>Signin</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="access.signup"> -->
-<!--           <span>Signup</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="access.forgotpwd"> -->
-<!--           <span>Forgot password</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--       <li> -->
-<!--         <a ui&#45;sref="access.404"> -->
-<!--           <span>404</span> -->
-<!--         </a> -->
-<!--       </li> -->
-<!--     </ul> -->
-<!--   </li> -->
-<!--  -->
-<!--   <li class="line dk hidden&#45;folded"></li> -->
-<!--  -->
-<!--   <li class="hidden&#45;folded padder m&#45;t m&#45;b&#45;sm text&#45;muted text&#45;xs"> -->
-<!--     Your Stuff -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a ui&#45;sref="app.page.profile"> -->
-<!--       <i class="icon&#45;user icon text&#45;success&#45;lter"></i> -->
-<!--       <b class="badge bg&#45;success dk pull&#45;right">30%</b> -->
-<!--       <span>Profile</span> -->
-<!--     </a> -->
-<!--   </li> -->
-<!--   <li> -->
-<!--     <a ui&#45;sref="app.docs"> -->
-<!--       <i class="icon&#45;question icon"></i> -->
-<!--       <span>Documents</span> -->
-<!--     </a> -->
-<!--   </li> -->
-</ul>
-<!-- / third -->
+  <ul class="nav">
+    <li>
+      <a ui-sref="app.dashboard">
+        <i class="glyphicon glyphicon-stats icon text-primary-lt"></i>
+        <span>Dashboard</span>
+      </a>
+    </li>
+    <li>
+      <a ui-sref="app.drone.list">
+        <i class="fa fa-group icon text-info-dker"></i>
+        <span>Accounts</span>
+      </a>
+    </li>
+    <li>
+      <a ui-sref="app.page.campaign">
+        <i class="glyphicon glyphicon-list icon text-info-lter"></i>
+        <span>Campaigns</span>
+      </a>
+    </li>
+    <li>
+      <a ui-sref="app.page.stats">
+        <i class="glyphicon glyphicon-signal icon text-success"></i>
+        <span>Stats</span>
+      </a>
+    </li>
+    <li class="line dk"></li>
+  </ul>

@@ -4,7 +4,7 @@
   height: @butterbar-height;
   .bar{
     position: absolute;
-    height: 0;
+    height: 30px;
     width: 100%;
     text-indent: -9999px;
     background-color: @brand-info;
@@ -19,19 +19,19 @@
   }
 }
 .butterbar.active{
-  // -webkit-animation: changebar @butterbar-time*3 infinite @butterbar-time;
-  // -moz-animation: changebar @butterbar-time*3 infinite; @butterbar-time;
-  // animation: changebar @butterbar-time*3 infinite @butterbar-time;
-  // .bar{
-  //   -webkit-animation: changebar @butterbar-time*3 infinite;
-  //   -moz-animation: changebar @butterbar-time*3 infinite;
-  //   animation: changebar @butterbar-time*3 infinite;
-  //   &:before{
-  //     -webkit-animation: movingbar @butterbar-time infinite;
-  //     -moz-animation: movingbar @butterbar-time infinite;
-  //     animation: movingbar @butterbar-time infinite;
-  //   }
-  // }
+  -webkit-animation: changebar @butterbar-time*3 infinite @butterbar-time;
+  -moz-animation: changebar @butterbar-time*3 infinite; @butterbar-time;
+  animation: changebar @butterbar-time*3 infinite @butterbar-time;
+  .bar{
+    -webkit-animation: changebar @butterbar-time*3 infinite;
+    -moz-animation: changebar @butterbar-time*3 infinite;
+    animation: changebar @butterbar-time*3 infinite;
+    &:before{
+      -webkit-animation: movingbar @butterbar-time infinite;
+      -moz-animation: movingbar @butterbar-time infinite;
+      animation: movingbar @butterbar-time infinite;
+    }
+  }
 }
 
 /* Moving bar */

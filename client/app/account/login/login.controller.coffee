@@ -6,7 +6,6 @@ angular.module 'adtunaApp'
   $scope.errors = {}
   $scope.login = (form) ->
     $scope.submitted = true
-
     if form.$valid
       # Logged in, redirect to home
       Auth.login

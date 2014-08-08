@@ -3,16 +3,24 @@
 angular.module 'adtunaApp'
 .config ($stateProvider) ->
   $stateProvider
-  .state 'login',
-    url: '/login'
-    templateUrl: 'app/account/login/login.html'
+  .state "access",
+    url: "/access"
+    template: "<div ui-view class=\"fade-in-right-big smooth\"></div>"
+    authenticate: true
+  .state "login",
+    url: "/login"
+    templateUrl: "tpl/page_signin.html"
     controller: 'LoginCtrl'
-
-  .state 'signup',
-    url: '/signup'
-    templateUrl: 'app/account/signup/signup.html'
+    authenticate: true
+  .state "access.signup",
+    url: "/signup"
+    templateUrl: "tpl/page_signup.html"
     controller: 'SignupCtrl'
-
+    authenticate: true
+  .state "access.forgotpwd",
+    url: "/forgotpwd"
+    templateUrl: "tpl/page_forgotpwd.html"
+    authenticate: true
   .state 'settings',
     url: '/settings'
     templateUrl: 'app/account/settings/settings.html'

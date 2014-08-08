@@ -95,6 +95,9 @@ angular.module 'adtunaApp'
   getCurrentUser: ->
     currentUser
 
+  getUserSync: (callback) ->
+    callback? currentUser
+
 
   ###
   Check if a user is logged in synchronously

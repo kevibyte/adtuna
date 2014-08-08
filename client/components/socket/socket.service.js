@@ -16,11 +16,6 @@ angular.module('adtunaApp')
 
     return {
       socket: socket,
-      start: function(obj){
-        socket.on('auth'){
-          cb(obj)
-        }
-      }
       /**
        * Register listeners to sync an array with updates on a model
        *

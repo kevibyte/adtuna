@@ -7,8 +7,7 @@
       <div class="row">
         <div class="col-sm-6 col-xs-12">
           <h1 class="m-n font-thin h3 text-black">Dashboard</h1>
-          <small class="text-muted">Welcome to angulr application</small>
-          <button class="btn btn-primary" ng-click="checkSock()">Check Socket</button>
+          <small class="text-muted">Welcome to AdTuna!</small>
         </div>
         <div class="col-sm-6 text-right hidden-xs">
           <div class="inline m-r text-left">
@@ -37,40 +36,40 @@
         <div class="col-md-5">
           <div class="row row-sm text-center">
             <div class="col-xs-6">
-              <div class="panel padder-v item">
-                <div class="h1 text-info font-thin h1">521</div>
-                <span class="text-muted text-xs">New items</span>
-                <div class="top text-right">
-                  <i class="fa fa-caret-down text-warning m-r-sm"></i>
-                </div>
-              </div>
+              <a ui-sref="app.drone.list" href class="block panel padder-v bg-info dker item">
+                <span class="block h1 text-white font-thin h1">{{drones.length || 0}}</span>
+                <span class="text-muted text-xs">Accounts</span>
+                <span class="bottom text-right">
+                  <i class="fa fa-group text-muted m-r-sm"></i>
+                </span>
+              </a>
             </div>
             <div class="col-xs-6">
-              <a href class="block panel padder-v bg-primary item">
-                <span class="text-white font-thin h1 block">930</span>
-                <span class="text-muted text-xs">Uploads</span>
+              <a href class="block panel padder-v bg-info lt item">
+                <span class="text-white font-thin h1 block">{{total_made || 0}}</span>
+                <span class="text-muted text-xs">Dollars Made</span>
                 <span class="bottom text-right">
-                  <i class="fa fa-cloud-upload text-muted m-r-sm"></i>
+                  <i class="fa fa-money text-muted m-r-sm"></i>
                 </span>
               </a>
             </div>
             <div class="col-xs-6">
               <a href class="block panel padder-v bg-info item">
-                <span class="text-white font-thin h1 block">432</span>
-                <span class="text-muted text-xs">Comments</span>
-                <span class="top text-left">
-                  <i class="fa fa-caret-up text-warning m-l-sm"></i>
+                <span class="text-white font-thin h1 block">{{campaigns || 0}}</span>
+                <span class="text-muted text-xs">Campaigns</span>
+                <span class="bottom text-right">
+                  <i class="fa fa-list text-muted m-r-sm"></i>
                 </span>
               </a>
             </div>
             <div class="col-xs-6">
-              <div class="panel padder-v item">
-                <div class="font-thin h1">129</div>
-                <span class="text-muted text-xs">Feeds</span>
-                <div class="bottom text-left">
-                  <i class="fa fa-caret-up text-warning m-l-sm"></i>
-                </div>
-              </div>
+              <a href class="block panel padder-v bg-info lter item">
+                <span class="font-thin text-white h1 block">{{active_ads || 0}}</span>
+                <span class="text-muted text-xs">Active Ads</span>
+                <span class="bottom text-right">
+                  <span class="icon-tuna-diag m-r-sm"></span>
+                </span>
+              </a>
             </div>
             <div class="col-xs-12 m-b-md">
               <div class="r bg-light dker item hbox no-border">
@@ -94,19 +93,19 @@
             <h4 class="font-thin m-t-none m-b text-muted">Latest Campaign</h4>
             <div ui-jq="plot" ui-refresh="showSpline" ui-options="
               [
-                { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: showSpline, tension: 0.4, lineWidth: 1, fill: 0.8 } },
-                { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: showSpline, tension: 0.4, lineWidth: 1, fill: 0.8 } }
+              { data: {{d0_1}}, label:'TV', points: { show: true, radius: 1}, splines: { show: showSpline, tension: 0.4, lineWidth: 1, fill: 0.8 } },
+              { data: {{d0_2}}, label:'Mag', points: { show: true, radius: 1}, splines: { show: showSpline, tension: 0.4, lineWidth: 1, fill: 0.8 } }
               ],
               {
-                colors: ['{{app.color.info}}', '{{app.color.primary}}'],
-                series: { shadowSize: 3 },
-                xaxis:{ font: { color: '#a1a7ac' } },
-                yaxis:{ font: { color: '#a1a7ac' }, max:20 },
-                grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
-                tooltip: true,
-                tooltipOpts: { content: '%s of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
+              colors: ['{{app.color.info}}', '{{app.color.primary}}'],
+              series: { shadowSize: 3 },
+              xaxis:{ font: { color: '#a1a7ac' } },
+              yaxis:{ font: { color: '#a1a7ac' }, max:20 },
+              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
+              tooltip: true,
+              tooltipOpts: { content: '%s of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
               }
-            " style="height:246px" >
+              " style="height:246px" >
             </div>
           </div>
         </div>
@@ -121,18 +120,18 @@
           <span class="m-b block text-sm text-muted">Service report of this year (updated 1 hour ago)</span>
           <div ui-jq="plot" ui-options="
             [
-              { data: {{d4}}, lines: { show: true, lineWidth: 1, fill:true, fillColor: { colors: [{opacity: 0.2}, {opacity: 0.8}] } } }
+            { data: {{d4}}, lines: { show: true, lineWidth: 1, fill:true, fillColor: { colors: [{opacity: 0.2}, {opacity: 0.8}] } } }
             ],
             {
-              colors: ['{{app.color.light}}'],
-              series: { shadowSize: 3 },
-              xaxis:{ show:false },
-              yaxis:{ font: { color: '#a1a7ac' } },
-              grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
-              tooltip: true,
-              tooltipOpts: { content: '%s of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
+            colors: ['{{app.color.light}}'],
+            series: { shadowSize: 3 },
+            xaxis:{ show:false },
+            yaxis:{ font: { color: '#a1a7ac' } },
+            grid: { hoverable: true, clickable: true, borderWidth: 0, color: '#dce5ec' },
+            tooltip: true,
+            tooltipOpts: { content: '%s of %x.1 is %y.4',  defaultTheme: false, shifts: { x: 10, y: -25 } }
             }
-          " style="height:240px" >
+            " style="height:240px" >
           </div>
         </div>
         <div class="col wrapper-lg w-lg bg-light dk r-r">
@@ -188,14 +187,14 @@
             <div class="row row-sm">
               <div class="col-xs-6 text-center">
                 <div ui-jq="easyPieChart" ui-options="{
-                    percent: 75,
-                    lineWidth: 4,
-                    trackColor: '{{app.color.light}}',
-                    barColor: '{{app.color.primary}}',
-                    scaleColor: false,
-                    size: 115,
-                    rotate: 90,
-                    lineCap: 'butt'
+                  percent: 75,
+                  lineWidth: 4,
+                  trackColor: '{{app.color.light}}',
+                  barColor: '{{app.color.primary}}',
+                  scaleColor: false,
+                  size: 115,
+                  rotate: 90,
+                  lineCap: 'butt'
                   }" class="inline m-t">
                   <div>
                     <span class="text-primary h4">75%</span>
@@ -205,14 +204,14 @@
               </div>
               <div class="col-xs-6 text-center">
                 <div ui-jq="easyPieChart" ui-options="{
-                    percent: 50,
-                    lineWidth: 4,
-                    trackColor: '{{app.color.light}}',
-                    barColor: '{{app.color.info}}',
-                    scaleColor: false,
-                    size: 115,
-                    rotate: 180,
-                    lineCap: 'butt'
+                  percent: 50,
+                  lineWidth: 4,
+                  trackColor: '{{app.color.light}}',
+                  barColor: '{{app.color.info}}',
+                  scaleColor: false,
+                  size: 115,
+                  rotate: 180,
+                  lineCap: 'butt'
                   }" class="inline m-t">
                   <div>
                     <span class="text-info h4">50%</span>
@@ -336,137 +335,137 @@
   <!-- right col -->
   <div class="col w-md bg-white-only b-l bg-auto bg-auto-right no-border-xs">
     <tabset class="nav-tabs-alt" justified="true">
-      <tab>
-        <tab-heading>
-          <i class="glyphicon glyphicon-user text-md text-muted wrapper-sm"></i>
-        </tab-heading>
-        <div class="wrapper-md">
-          <div class="m-b-sm text-md">Who to follow</div>
-          <ul class="list-group no-bg no-borders pull-in">
-            <li class="list-group-item">
-              <a herf class="pull-left thumb-sm avatar m-r">
-                <img src="img/a4.jpg" alt="..." class="img-circle">
-                <i class="on b-white bottom"></i>
-              </a>
-              <div class="clear">
-                <div><a href>Chris Fox</a></div>
-                <small class="text-muted">Designer, Blogger</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <a herf class="pull-left thumb-sm avatar m-r">
-                <img src="img/a5.jpg" alt="..." class="img-circle">
-                <i class="on b-white bottom"></i>
-              </a>
-              <div class="clear">
-                <div><a href>Mogen Polish</a></div>
-                <small class="text-muted">Writter, Mag Editor</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <a herf class="pull-left thumb-sm avatar m-r">
-                <img src="img/a6.jpg" alt="..." class="img-circle">
-                <i class="busy b-white bottom"></i>
-              </a>
-              <div class="clear">
-                <div><a href>Joge Lucky</a></div>
-                <small class="text-muted">Art director, Movie Cut</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <a herf class="pull-left thumb-sm avatar m-r">
-                <img src="img/a7.jpg" alt="..." class="img-circle">
-                <i class="away b-white bottom"></i>
-              </a>
-              <div class="clear">
-                <div><a href>Folisise Chosielie</a></div>
-                <small class="text-muted">Musician, Player</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <a herf class="pull-left thumb-sm avatar m-r">
-                <img src="img/a8.jpg" alt="..." class="img-circle">
-                <i class="away b-white bottom"></i>
-              </a>
-              <div class="clear">
-                <div><a href>Aron Gonzalez</a></div>
-                <small class="text-muted">Designer</small>
-              </div>
-            </li>
-          </ul>
-          <div class="text-center">
-            <a href class="btn btn-sm btn-primary padder-md m-b">More Connections</a>
+    <tab>
+    <tab-heading>
+    <i class="glyphicon glyphicon-user text-md text-muted wrapper-sm"></i>
+    </tab-heading>
+    <div class="wrapper-md">
+      <div class="m-b-sm text-md">Who to follow</div>
+      <ul class="list-group no-bg no-borders pull-in">
+        <li class="list-group-item">
+          <a herf class="pull-left thumb-sm avatar m-r">
+            <img src="img/a4.jpg" alt="..." class="img-circle">
+            <i class="on b-white bottom"></i>
+          </a>
+          <div class="clear">
+            <div><a href>Chris Fox</a></div>
+            <small class="text-muted">Designer, Blogger</small>
           </div>
-        </div>
-      </tab>
-      <tab>
-        <tab-heading>
-          <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"></i>
-        </tab-heading>
-        <div class="wrapper-md">
-          <div class="m-b-sm text-md">Chat</div>
-          <ul class="list-group no-borders pull-in auto">
-            <li class="list-group-item">
-              <span class="pull-left thumb-sm m-r"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
-              <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-              <div class="clear">
-                <div><a href="">Chris Fox</a></div>
-                <small class="text-muted">about 2 minutes ago</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <span class="pull-left thumb-sm m-r"><img src="img/a2.jpg" alt="..." class="img-circle"></span>
-              <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-              <div class="clear">
-                <div><a href="">Amanda Conlan</a></div>
-                <small class="text-muted">about 2 hours ago</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <span class="pull-left thumb-sm m-r"><img src="img/a3.jpg" alt="..." class="img-circle"></span>
-              <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-              <div class="clear">
-                <div><a href="">Dan Doorack</a></div>
-                <small class="text-muted">3 days ago</small>
-              </div>
-            </li>
-            <li class="list-group-item">
-              <span class="pull-left thumb-sm m-r"><img src="img/a4.jpg" alt="..." class="img-circle"></span>
-              <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
-              <div class="clear">
-                <div><a href="">Lauren Taylor</a></div>
-                <small class="text-muted">about 2 minutes ago</small>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </tab>
-      <tab>
-        <tab-heading>
-          <i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i>
-        </tab-heading>
-        <div class="wrapper-md">
-          <div class="m-b-sm text-md">Transaction</div>
-          <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
-            <li class="list-group-item">
-              <span class="text-muted">Transfer to Jacob at 3:00 pm</span>
-              <span class="block text-md text-info">B 15,000.00</span>
-            </li>
-            <li class="list-group-item">
-              <span class="text-muted">Got from Mike at 1:00 pm</span>
-              <span class="block text-md text-primary">B 23,000.00</span>
-            </li>
-            <li class="list-group-item">
-              <span class="text-muted">Sponsored ORG at 9:00 am</span>
-              <span class="block text-md text-warning">B 3,000.00</span>
-            </li>
-            <li class="list-group-item">
-              <span class="text-muted">Send to Jacob at 8:00 am</span>
-              <span class="block text-md">B 11,000.00</span>
-            </li>
-          </ul>
-        </div>
-      </tab>
+        </li>
+        <li class="list-group-item">
+          <a herf class="pull-left thumb-sm avatar m-r">
+            <img src="img/a5.jpg" alt="..." class="img-circle">
+            <i class="on b-white bottom"></i>
+          </a>
+          <div class="clear">
+            <div><a href>Mogen Polish</a></div>
+            <small class="text-muted">Writter, Mag Editor</small>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <a herf class="pull-left thumb-sm avatar m-r">
+            <img src="img/a6.jpg" alt="..." class="img-circle">
+            <i class="busy b-white bottom"></i>
+          </a>
+          <div class="clear">
+            <div><a href>Joge Lucky</a></div>
+            <small class="text-muted">Art director, Movie Cut</small>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <a herf class="pull-left thumb-sm avatar m-r">
+            <img src="img/a7.jpg" alt="..." class="img-circle">
+            <i class="away b-white bottom"></i>
+          </a>
+          <div class="clear">
+            <div><a href>Folisise Chosielie</a></div>
+            <small class="text-muted">Musician, Player</small>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <a herf class="pull-left thumb-sm avatar m-r">
+            <img src="img/a8.jpg" alt="..." class="img-circle">
+            <i class="away b-white bottom"></i>
+          </a>
+          <div class="clear">
+            <div><a href>Aron Gonzalez</a></div>
+            <small class="text-muted">Designer</small>
+          </div>
+        </li>
+      </ul>
+      <div class="text-center">
+        <a href class="btn btn-sm btn-primary padder-md m-b">More Connections</a>
+      </div>
+    </div>
+    </tab>
+    <tab>
+    <tab-heading>
+    <i class="glyphicon glyphicon-comment text-md text-muted wrapper-sm"></i>
+    </tab-heading>
+    <div class="wrapper-md">
+      <div class="m-b-sm text-md">Chat</div>
+      <ul class="list-group no-borders pull-in auto">
+        <li class="list-group-item">
+          <span class="pull-left thumb-sm m-r"><img src="img/a1.jpg" alt="..." class="img-circle"></span>
+          <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
+          <div class="clear">
+            <div><a href="">Chris Fox</a></div>
+            <small class="text-muted">about 2 minutes ago</small>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <span class="pull-left thumb-sm m-r"><img src="img/a2.jpg" alt="..." class="img-circle"></span>
+          <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
+          <div class="clear">
+            <div><a href="">Amanda Conlan</a></div>
+            <small class="text-muted">about 2 hours ago</small>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <span class="pull-left thumb-sm m-r"><img src="img/a3.jpg" alt="..." class="img-circle"></span>
+          <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
+          <div class="clear">
+            <div><a href="">Dan Doorack</a></div>
+            <small class="text-muted">3 days ago</small>
+          </div>
+        </li>
+        <li class="list-group-item">
+          <span class="pull-left thumb-sm m-r"><img src="img/a4.jpg" alt="..." class="img-circle"></span>
+          <a href class="text-muted"><i class="fa fa-comment-o pull-right m-t-sm text-sm"></i></a>
+          <div class="clear">
+            <div><a href="">Lauren Taylor</a></div>
+            <small class="text-muted">about 2 minutes ago</small>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </tab>
+    <tab>
+    <tab-heading>
+    <i class="glyphicon glyphicon-transfer text-md text-muted wrapper-sm"></i>
+    </tab-heading>
+    <div class="wrapper-md">
+      <div class="m-b-sm text-md">Transaction</div>
+      <ul class="list-group list-group-sm list-group-sp list-group-alt auto m-t">
+        <li class="list-group-item">
+          <span class="text-muted">Transfer to Jacob at 3:00 pm</span>
+          <span class="block text-md text-info">B 15,000.00</span>
+        </li>
+        <li class="list-group-item">
+          <span class="text-muted">Got from Mike at 1:00 pm</span>
+          <span class="block text-md text-primary">B 23,000.00</span>
+        </li>
+        <li class="list-group-item">
+          <span class="text-muted">Sponsored ORG at 9:00 am</span>
+          <span class="block text-md text-warning">B 3,000.00</span>
+        </li>
+        <li class="list-group-item">
+          <span class="text-muted">Send to Jacob at 8:00 am</span>
+          <span class="block text-md">B 11,000.00</span>
+        </li>
+      </ul>
+    </div>
+    </tab>
     </tabset>
     <div class="padder-md">
       <!-- streamline -->

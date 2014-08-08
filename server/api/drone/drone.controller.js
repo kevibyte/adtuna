@@ -11,6 +11,14 @@ exports.index = function(req, res) {
   });
 };
 
+// Get drone by ip
+exports.find_ip = function(req, res) {
+  Drone.find({ip:req.params.ip}, function (err, drone) {
+    if(err) { return handleError(res, err); }
+    if(!drone) { return res.send(404); }
+    return res.json(drone);
+  });
+};
 // Get a single drone
 exports.show = function(req, res) {
   Drone.findById(req.params.id, function (err, drone) {

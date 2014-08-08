@@ -10,15 +10,12 @@ app = angular.module 'adtunaApp', [
   'ngAnimate',
   'ui.load',
   'ui.jq',
-  'ui.validate',
-  'app.filters',
-  'app.services',
   'app.directives',
   'app.controllers'
 ]
 .run ($rootScope, $state, $stateParams, $location, Auth) ->
   $rootScope.$state = $state;
-  $rootScope.$stateParams = $stateParams;        
+  $rootScope.$stateParams = $stateParams;
   # Redirect to login if route requires auth and you're not logged in
   $rootScope.$on '$stateChangeStart', (event, next) ->
     Auth.isLoggedInAsync (loggedIn) ->

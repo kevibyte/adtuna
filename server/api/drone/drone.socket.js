@@ -20,9 +20,6 @@ exports.register = function(socket) {
       if(!has_user) drones[username].push(socket.handshake.address.address)
       socket.broadcast.emit('drones:'+username, drones[username])
     }
-    function get_drones(username){
-      socket.emit('drones:'+username, drones[username])
-    }
     function remove(){
       var r_index;
       drones[socket.ext].map(function(ip, num){
@@ -31,8 +28,9 @@ exports.register = function(socket) {
       drones[socket.ext].splice(r_index, 1)
       socket.broadcast.emit('drones:'+socket.ext, drones[socket.ext])
     }
-    socket.on('client_auth', function(username){
-      get_drones(username)
+    socket.on('get_drones', function(username){
+      console.log('SOMEBODY GETTIN SOME DRONES', username)
+      socket.broadcast.emit('drones:'+username, drones[username])
     })
     socket.on('ext_auth', function(username){
       socket.ext = username;

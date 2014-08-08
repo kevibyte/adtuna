@@ -11,6 +11,10 @@ body {
   line-height: @line-height-base;
 }
 
+.hover_row {
+  background-color: #000;
+  cursor: pointer;
+}
 *:focus {
   outline: 0 !important;
 }
@@ -427,7 +431,6 @@ blockquote{
 .panel-group .panel-heading + .panel-collapse .panel-body{
   border-top: 1px solid #eaedef;
 }
-
 .table{
   > tbody{
     > tr{
@@ -442,34 +445,34 @@ blockquote{
     .glyphicon-chevron-down,
     .fa-chevron-up,
     .fa-chevron-down {
-        position: absolute;
-        color: #999;
-        font-size:10px;
+      position: absolute;
+      color: #999;
+      font-size:10px;
 
-        &:hover {
-            color: @brand-dark;
-            cursor: pointer;
-        }
-        &.active {
-            color: @brand-dark;
-        }
+      &:hover {
+        color: @brand-dark;
+        cursor: pointer;
+      }
+      &.active {
+        color: @brand-dark;
+      }
     }
     .fa-chevron-up {
-        top: 4px;
-        right: 5px;
+      top: 4px;
+      right: 5px;
     }
     .fa-chevron-down {
-        top: 18px;
-        right: 5px;
+      top: 18px;
+      right: 5px;
     }
-      .glyphicon-chevron-up {
-          top: 4px;
-          right: 5px;
-      }
-      .glyphicon-chevron-down {
-          top: 18px;
-          right: 6px;
-      }
+    .glyphicon-chevron-up {
+      top: 4px;
+      right: 5px;
+    }
+    .glyphicon-chevron-down {
+      top: 18px;
+      right: 6px;
+    }
   }
 
   > thead > tr > th{
